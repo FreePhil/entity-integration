@@ -45,6 +45,7 @@ public class ItemTest
         // act
         //
         var createdItem = repository.Create(item);
+        var retrievedItem = repository.Get(createdItem.Id);
 
         // assert
         //
@@ -52,6 +53,7 @@ public class ItemTest
         Assert.That(createdItem.Name, Is.EqualTo(item.Name));
         Assert.That(createdItem.IsAvailable, Is.EqualTo(item.IsAvailable));
         Assert.That(createdItem.Amount, Is.EqualTo(item.Amount));
+        Assert.That(retrievedItem, Is.Not.Null);
     }
     
     private int CreateArbitraryItem(string option)
